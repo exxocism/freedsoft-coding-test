@@ -5,7 +5,5 @@ const MainPage = () => {
   return <Container>Container Hello World!</Container>;
 };
 
-const Container = styled.div`
-  margin-top: 45px;
-`;
+const Container = styled.div``;
 export default MainPage;

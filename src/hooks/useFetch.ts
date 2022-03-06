@@ -11,6 +11,7 @@ const useFetch = (url: string): Array<any> => {
   useEffect(() => {
     (async function () {
       let response;
+      if (albumData.length) return;
 
       try {
         response = await axios.get(url);
@@ -20,7 +21,7 @@ const useFetch = (url: string): Array<any> => {
       }
       setAlbumData(response.data);
     })();
-  }, []);
+  }, [albumData]);
 
   return [albumData, setAlbumData];
 };

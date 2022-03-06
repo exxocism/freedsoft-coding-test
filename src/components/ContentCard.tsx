@@ -1,15 +1,21 @@
-import React from 'react';
+import React, { useCallback } from 'react';
+import { useNavigate } from 'react-router-dom';
 import styled from 'styled-components';
 
 import { Album } from '../types';
 
 const ContentCard = ({ cardData }: { cardData: Album }) => {
+  const navigate = useNavigate();
+
   if (!cardData) return null;
 
   const { id, userId, title } = cardData as Album;
+  const handleClick = useCallback(() => {
+    navigate(`/product/${id}`);
+  }, [id]);
 
   return (
-    <Container>
+    <Container onClick={handleClick}>
       <img src="http://via.placeholder.com/220x160" alt={title} />
       <MetaData>
         <div>{title}</div>

@@ -1,4 +1,4 @@
-import React, { useCallback } from 'react';
+import React, { useCallback, memo } from 'react';
 import { useNavigate } from 'react-router-dom';
 import styled from 'styled-components';
 
@@ -60,4 +60,4 @@ const LoginButton = styled.div`
   font-size: 14px;
 `;
 
-export default Header;
+export default memo(Header);

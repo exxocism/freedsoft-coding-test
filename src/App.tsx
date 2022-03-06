@@ -6,9 +6,7 @@ import PageWithHeader from './pages/PageWithHeader';
 import MainPage from './pages/MainPage';
 
 const Container = styled.div`
-  max-width: 768px;
-  margin: 0 auto;
-  font-size: 40px;
+  margin: 0 96px;
 `;
 
 const App = () => {

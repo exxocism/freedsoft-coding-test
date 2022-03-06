@@ -1,13 +1,20 @@
-import React from 'react';
+import React, { useCallback } from 'react';
+import { useNavigate } from 'react-router-dom';
 import styled from 'styled-components';
 
 import logo from '../assets/images/logo.png';
 
 const Header = () => {
+  const navigate = useNavigate();
+
+  const onClickLogo = useCallback(() => {
+    navigate('/');
+  }, []);
+
   return (
     <ShadowLine>
       <HeaderFlexBox>
-        <MainLogo src={logo} alt="TravelFlan Main Logo" />
+        <MainLogo src={logo} alt="TravelFlan Main Logo" onClick={onClickLogo} />
         <div style={{ flexGrow: 1 }} />
         <LoginButton>Login</LoginButton>
       </HeaderFlexBox>
@@ -40,6 +47,7 @@ const MainLogo = styled.img`
   width: 129px;
   object-fit: cover;
   margin-right: 30px;
+  cursor: pointer;
 `;
 
 const LoginButton = styled.div`

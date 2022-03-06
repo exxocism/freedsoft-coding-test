@@ -30,6 +30,7 @@ const Container = styled.div`
   display: grid;
   grid-template-columns: 1fr;
   grid-template-rows: 160fr 107fr;
+  cursor: pointer;
 `;
 
 const MetaData = styled.div`

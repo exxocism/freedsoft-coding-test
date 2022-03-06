@@ -2,12 +2,14 @@ const path = require('path');
 const { CleanWebpackPlugin } = require('clean-webpack-plugin');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const CopyPlugin = require('copy-webpack-plugin');
+const mode = 'development'; // 'production';
 
 module.exports = {
   entry: './src/index.tsx',
   output: {
     filename: '[name].[chunkhash].js',
     path: path.resolve(__dirname, 'build'),
+    publicPath: '/',
     assetModuleFilename: 'assets/[hash].[query].[ext]',
   },
   module: {
@@ -24,6 +26,11 @@ module.exports = {
             },
           },
         ],
+      },
+      {
+        test: /\.js$/,
+        enforce: 'pre',
+        use: [mode === 'development' && 'source-map-loader'],
       },
       {
         test: /\.css$/,
@@ -87,8 +94,7 @@ module.exports = {
       ],
     }),
   ],
-  // mode: 'production',
-  mode: 'development',
+  mode,
   devServer: {
     static: {
       directory: path.join(__dirname, './src/assets'),
@@ -96,6 +102,7 @@ module.exports = {
     hot: true,
     host: '0.0.0.0',
     port: 3300,
+    historyApiFallback: true,
   },
   optimization: {
     splitChunks: {
